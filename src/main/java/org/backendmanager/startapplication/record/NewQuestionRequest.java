@@ -1,2 +1,8 @@
-package org.backendmanager.startapplication.record;public record NewQuestionRequest() {
+package org.backendmanager.startapplication.record;
+
+import org.backendmanager.startapplication.enums.CategoryEnum;
+
+import java.util.ArrayList;
+
+public record NewQuestionRequest(CategoryEnum category, String question, ArrayList<String> optionList, String answer) {
 }
