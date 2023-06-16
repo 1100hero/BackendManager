@@ -27,11 +27,14 @@ public class Question {
     private ArrayList<String> optionList;
     @Field("_correctAnswer")
     private String answer;
+    @Field("_explanation")
+    private String explanation;
 
-    public Question(CategoryEnum category, String question, ArrayList<String> optionList, String answer) {
+    public Question(CategoryEnum category, String question, ArrayList<String> optionList, String answer, String explanation) {
         this.category = category;
         this.question = question;
         this.optionList = optionList;
         this.answer = answer;
+        this.explanation = explanation;
     }
 }

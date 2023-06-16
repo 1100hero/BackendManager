@@ -1,7 +1,6 @@
 package org.backendmanager.startapplication.controller;
 
 import org.backendmanager.startapplication.domain.Player;
-import org.backendmanager.startapplication.repository.CategoryRepository;
 import org.backendmanager.startapplication.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +16,6 @@ public class APIController {
 
     @Autowired
     private PlayerRepository playerRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @GetMapping("/registered-players")
     public List<Player> getAllPlayers() {
@@ -32,7 +29,6 @@ public class APIController {
 
     @DeleteMapping("/wipe-database")
     public void wipeDatabase() {
-        categoryRepository.deleteAll();
         playerRepository.deleteAll();
     }
 }
