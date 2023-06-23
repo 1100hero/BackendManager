@@ -1,7 +1,6 @@
 package org.backendmanager.startapplication.controller;
 
 import org.backendmanager.startapplication.domain.Question;
-import org.backendmanager.startapplication.enums.CategoryEnum;
 import org.backendmanager.startapplication.record.NewQuestionRequest;
 import org.backendmanager.startapplication.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,7 @@ public class QuestionController {
     private QuestionRepository questionRepository;
 
     @PostMapping("/insert")
+    @Deprecated(forRemoval = true)
     public ResponseEntity<Question> addQuestionToDB(@RequestBody NewQuestionRequest questionRequest){
         questionRepository.save(new Question(questionRequest.category(), questionRequest.question(),
                 questionRequest.optionList(), questionRequest.answer(), questionRequest.explanation()));
@@ -27,7 +27,7 @@ public class QuestionController {
     }
 
     @GetMapping("/{category}-questions")
-    public List<Question> findAllQuestionsByCategory(@PathVariable("category") CategoryEnum category){
-        return null;
+    public List<Question> findAllQuestionsByCategory(@PathVariable("category") String category){
+        return questionRepository.findAllByCategory(category.toUpperCase());
     }
 }

@@ -1,6 +1,6 @@
 package org.backendmanager.startapplication.enums;
 
-public enum CategoryEnum {
+public enum Category {
     GEOGRAPHY,
     ART,
     VIDEOGAMES,
