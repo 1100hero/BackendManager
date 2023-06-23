@@ -10,7 +10,8 @@ import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 @Configuration
 public class MongoConfiguration implements InitializingBean {
 
-    @Autowired @Lazy
+    @Autowired
+    @Lazy
     private MappingMongoConverter mappingMongoConverter;
 
     @Override

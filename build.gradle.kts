@@ -24,13 +24,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.postgresql:postgresql")
     implementation("org.springframework.data:spring-data-mongodb")
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }

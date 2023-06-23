@@ -2,7 +2,7 @@ package org.backendmanager.startapplication.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.backendmanager.startapplication.enums.CategoryEnum;
+import org.backendmanager.startapplication.enums.Category;
 
 @Entity @Data
 public class Player {
@@ -21,10 +21,10 @@ public class Player {
     @Column(unique = true)
     private String username;
     @Enumerated(EnumType.STRING)
-    private CategoryEnum category;
+    private Category category;
     private Integer points;
 
-    public Player(String username, CategoryEnum category, Integer points){
+    public Player(String username, Category category, Integer points){
         setUsername(username);
         setCategory(category);
         setPoints(points);

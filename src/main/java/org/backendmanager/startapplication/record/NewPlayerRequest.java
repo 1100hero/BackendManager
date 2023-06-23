@@ -1,6 +1,6 @@
 package org.backendmanager.startapplication.record;
 
-import org.backendmanager.startapplication.enums.CategoryEnum;
+import org.backendmanager.startapplication.enums.Category;
 
-public record NewPlayerRequest(String username, CategoryEnum category, Integer points) {
+public record NewPlayerRequest(String username, Category category, Integer points) {
 }

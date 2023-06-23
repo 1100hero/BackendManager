@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/question")
 @CrossOrigin
@@ -17,9 +19,15 @@ public class QuestionController {
     private QuestionRepository questionRepository;
 
     @PostMapping("/insert")
+    @Deprecated(forRemoval = true)
     public ResponseEntity<Question> addQuestionToDB(@RequestBody NewQuestionRequest questionRequest){
         questionRepository.save(new Question(questionRequest.category(), questionRequest.question(),
-                questionRequest.optionList(), questionRequest.answer()));
+                questionRequest.optionList(), questionRequest.answer(), questionRequest.explanation()));
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/{category}-questions")
+    public List<Question> findAllQuestionsByCategory(@PathVariable("category") String category){
+        return questionRepository.findAllByCategory(category.toUpperCase());
     }
 }

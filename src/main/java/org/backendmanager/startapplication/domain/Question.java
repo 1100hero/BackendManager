@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.backendmanager.startapplication.enums.CategoryEnum;
+import org.backendmanager.startapplication.enums.Category;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -20,18 +20,21 @@ public class Question {
     @Field("_id")
     private String id;
     @Field("_category")
-    private CategoryEnum category;
+    private Category category;
     @Field("_questions")
     private String question;
     @Field("_options") @ElementCollection
     private ArrayList<String> optionList;
     @Field("_correctAnswer")
     private String answer;
+    @Field("_explanation")
+    private String explanation;
 
-    public Question(CategoryEnum category, String question, ArrayList<String> optionList, String answer) {
+    public Question(Category category, String question, ArrayList<String> optionList, String answer, String explanation) {
         this.category = category;
         this.question = question;
         this.optionList = optionList;
         this.answer = answer;
+        this.explanation = explanation;
     }
 }
