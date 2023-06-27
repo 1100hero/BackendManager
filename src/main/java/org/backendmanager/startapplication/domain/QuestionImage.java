@@ -8,9 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 
-@Document("Questions")
+@Document("QuestionsImage")
 @Data
-public class Question {
+public class QuestionImage {
 
     @Id
     @Field("_id")
@@ -25,5 +25,7 @@ public class Question {
     private String answer;
     @Field("_explanation")
     private String explanation;
+    @Field("_image-link")
+    private String url;
 
 }
