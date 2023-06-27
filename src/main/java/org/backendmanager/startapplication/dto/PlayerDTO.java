@@ -1,6 +1,5 @@
 package org.backendmanager.startapplication.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface QuestionRepository extends MongoRepository<Question, Integer> {
+public interface QuestionRepository extends MongoRepository<Question, String> {
 
-    @Query("{ '_category' : ?0 }")
+    @Query("{ '_category' : { $regex: '^?0$', $options: 'i' } }")
     List<Question> findAllByCategory(String category);
+
 }

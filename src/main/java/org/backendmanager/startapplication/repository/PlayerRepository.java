@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,5 +25,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     @Modifying
     @Query("UPDATE Player p SET p.points = p.points + :points WHERE p.username = :username")
+    @Async
     void updatePointsByUsername(String username, Integer points);
 }

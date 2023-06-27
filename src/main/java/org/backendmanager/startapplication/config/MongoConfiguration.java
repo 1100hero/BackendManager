@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "org.backendmanager.startapplication.repository")
 public class MongoConfiguration implements InitializingBean {
 
     @Autowired
@@ -16,6 +18,7 @@ public class MongoConfiguration implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        mappingMongoConverter.setTypeMapper(new DefaultMongoTypeMapper(null));
+        mappingMongoConverter.
+                setTypeMapper(new DefaultMongoTypeMapper(null));
     }
 }
