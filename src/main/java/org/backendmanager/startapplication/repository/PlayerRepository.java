@@ -2,6 +2,7 @@ package org.backendmanager.startapplication.repository;
 
 import org.backendmanager.startapplication.domain.Player;
 import org.backendmanager.startapplication.dto.PlayerDTO;
+import org.backendmanager.startapplication.enums.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,4 +28,10 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Query("UPDATE Player p SET p.points = p.points + :points WHERE p.username = :username")
     @Async
     void updatePointsByUsername(String username, Integer points);
+
+    @Query("SELECT p.category FROM Player p WHERE p.username = :username")
+    Category findCategoryByUsername(String username);
+
+    @Query("SELECT p.id FROM Player p WHERE p.username = :username")
+    Long findIdByUsername(String username);
 }

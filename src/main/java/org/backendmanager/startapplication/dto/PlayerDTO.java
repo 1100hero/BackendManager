@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class PlayerDTO {
+
     private String username;
     private Integer points;
 
