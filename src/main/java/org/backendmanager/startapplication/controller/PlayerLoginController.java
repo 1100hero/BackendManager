@@ -6,6 +6,7 @@ import org.backendmanager.startapplication.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,17 +18,15 @@ public class PlayerLoginController {
     private PlayerRepository repository;
 
     @PostMapping
-    public ResponseEntity<Player> addPlayerIfNotExists(@RequestBody NewPlayerRequest playerRequest){
-        if(repository.existPlayer(playerRequest.username())){
+    @Async
+    public void addPlayerIfNotExists(@RequestBody NewPlayerRequest playerRequest) {
+        if (repository.existPlayer(playerRequest.username())) {
             // Sending CONFLICT: <player> already exists in database and it's UNIQUE
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            new ResponseEntity<>(HttpStatus.CONFLICT);
+            return;
         }
         repository.save(new Player(playerRequest.username(), playerRequest.category(), playerRequest.points()));
-        return new ResponseEntity<>(HttpStatus.OK);
+        new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePlayer(@PathVariable("id") Long id){
-        repository.deleteById(id);
-    }
 }
